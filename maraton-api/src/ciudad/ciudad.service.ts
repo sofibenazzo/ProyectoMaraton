@@ -21,12 +21,12 @@ export class CiudadService {
     return this.ciudadRepo.save(ciudad);
   }
 
-  // READ ALL
+  // OBTENER REGISTROS
   async findAll(): Promise<Ciudad[]> {
     return await  this.ciudadRepo.find({ relations: ['atletas'] });
   }
 
-  // READ ONE
+  //LEER UN SOLO REGISTRO
   async findOne(id: number): Promise<Ciudad> {
     const ciudad = await this.ciudadRepo.findOne({ where: { id }, relations: ['atletas'] });
     if (!ciudad) throw new NotFoundException('Ciudad no encontrada');
